@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <script src="ethabi.js"></script>
+</head>
+<body>
+    <header>
+        <img src="Ethereum_logo_gold.png" class="logo" alt="logo">
+        <nav>
+            <a href="#" style="color: #ffffffe0;">Send Coins</a> |
+            <a href="#" style="color: #ffffffe0;">Mint Coins </a>
+        </nav>
+    </header>
+
+    <div id="transfer"><img src="transfer.jpg" alt="transfer eth" class="transfer"></div>
+    
+    <h1 class="heading">Coin Transfer</h1>
+    <hr>
+    <section>
+        <main>
+            <p class="input">
+                Address
+                <input id='address' type="text" class="address">
+                Amount
+                <input type="number" class ="amount" id="number">
+                <button class = "button" id="button">Send</button>
+            </p>
+
+        <p class="balance">
+            <button class = "balance" id="balance">Check balance</button> 
+            <h3 id="balanceinfo" class="balance">hh</h3>     
+        </p>
+
+        <p class="mint">
+            Amount
+            <input id="amountOfCoins" type="number" id="amountOfCoins">
+            <button class = "mint" id="mint">Mint Coins</button>      
+        </p>
+
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non laborum, distinctio aliquid maiores voluptate dolore consequuntur eos, aperiam odit recusandae, quisquam repellat mollitia minus esse reprehenderit ad asperiores. Tempora, aperiam. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente expedita sit quae pariatur. Modi amet suscipit eaque sed quas distinctio ipsum reiciendis, error vitae voluptatum delectus consequuntur ea id rem.</p>
+        </main>
+    </section>
+
+    <script src="index.js"></script>
+</body>
+</html>
