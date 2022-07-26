@@ -1,3 +1,7 @@
+var userAcccount ;
+ethereum.request({ method: 'eth_accounts' }).then(function(result){
+    console.log(result[0]);
+});
 
 
 function getBalance(){
@@ -23,11 +27,17 @@ function startApp(){
                 $("#balanceinfo").text(result);
              $("#balanceinfo").css("visibility","visible");
         });
-
     });
 
     document.getElementById('mint').addEventListener('click',function(){
         let amt = document.getElementById('amountOfCoins').value;
         mintCoin(amt);
     })
+
+    // var accountInterval = setInterval(function() {
+    //     if (userAcccount != getAccount()) {
+    //       userAccount = getAccount();
+    //       alert("account changed");
+    //     }
+    //   }, 100);
 }
