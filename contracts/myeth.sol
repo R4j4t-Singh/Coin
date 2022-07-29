@@ -19,16 +19,16 @@ contract myEth{
         _;
     }   
 
-    function mint(uint _amount) public onlyMinter(){
+    function mint(uint _amount) external onlyMinter(){
         Balance[minter] += _amount;
     }
 
-    function transfer(address _reciever,uint _amount) public checkBal(_amount){
+    function transfer(address _reciever,uint _amount) external checkBal(_amount){
         Balance[_reciever] += _amount;
         Balance[msg.sender] -= _amount;
     }
 
-    function balance() public view returns(uint) {
-        return Balance[msg.sender];
+    function balance(address addr) external view returns(uint) {   
+        return Balance[addr];
     }
 }

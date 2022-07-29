@@ -1,15 +1,20 @@
-var userAcccount ;
-ethereum.request({ method: 'eth_accounts' }).then(function(result){
-    console.log(result[0]);
-});
+var userAccounts;
 
+function getAccount(){
+let result = ethereum.request({ method: 'eth_accounts' })
+return result;
+}
 
 function getBalance(){
-    return contract1.methods.balance().call()
+    return contract1.methods.balance(userAccounts[0]).call();
 }
 
 function mintCoin(amt) {
-    contract1.methods.mint(amt).send({from:"0x4809d60B1062873C7f02A4983361cCcAb1d6c9f7"});
+    contract1.methods.mint(amt).send({from:userAccounts[0]});
+}
+
+function transfer(reciever,amt){
+    contract1.methods.transfer(reciever,amt).send({from:userAccounts[0]});
 }
 
 window.addEventListener('load',function(){
@@ -19,13 +24,14 @@ window.addEventListener('load',function(){
 });
 
 
-function startApp(){
-    contract1 = new web3.eth.Contract(ethAbi,"0xd5f44219d1b8e25e11f03fb15bbf21a5daa99970");
+async function startApp(){
+    contract1 = new web3.eth.Contract(ethAbi,"0x860475E69f3BaD7c3d06C6f23F871d8557D50cee");
+
+    userAccounts = await getAccount();
 
     document.getElementById('balance').addEventListener('click',function(){
         getBalance().then(function(result){
                 $("#balanceinfo").text(result);
-             $("#balanceinfo").css("visibility","visible");
         });
     });
 
@@ -34,10 +40,19 @@ function startApp(){
         mintCoin(amt);
     })
 
-    // var accountInterval = setInterval(function() {
-    //     if (userAcccount != getAccount()) {
-    //       userAccount = getAccount();
-    //       alert("account changed");
-    //     }
-    //   }, 100);
+    document.getElementById('button').addEventListener('click',function(){
+        let reciever = document.getElementById('address').value;
+        let amt = document.getElementById('amount').value;
+        transfer(reciever,amt);
+    })
+
+
+    var accountInterval = setInterval(async function() {
+        var currentAccounts = await getAccount();
+       
+        if (userAccounts[0] != currentAccounts[0]) {
+          userAccounts[0] = currentAccounts[0];
+          alert("account changed");
+        }
+      }, 100);
 }
