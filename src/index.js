@@ -25,7 +25,7 @@ window.addEventListener('load',function(){
 
 
 async function startApp(){
-    contract1 = new web3.eth.Contract(ethAbi,"0x860475E69f3BaD7c3d06C6f23F871d8557D50cee");
+    contract1 = new web3.eth.Contract(ethAbi,"0x722C63a9ea2bF333908140EE03Afa10b19CD52bC");
 
     userAccounts = await getAccount();
 

@@ -1,5 +1,7 @@
 pragma solidity 0.8.14;
 
+//SPDX-License-Identifier: UNLICENSED
+
 contract myEth{
     
     address private minter;
